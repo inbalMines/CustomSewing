@@ -1,47 +1,37 @@
 const express = require(`express`)
 const app = express()
 const jwt = require(`jsonwebtoken`)
-const {MongoClient} = require('mongodb')
+const mongooDb = require('mongoose')
 const env = require(`dotenv`)
 env.config()
 const bodyParser = require(`body-parser`)
 const nodemon = require(`nodemon`)
 const nodeMailer = require(`nodemailer`)
-const router = express.Router()
+const { healthCheck } = require('./controller/index')
+const router = require(`./controller/routes`)
 
 
 app.use(bodyParser.json())
+app.use(`/`, router)
+
 
 
 app.listen(process.env.PORT, () => {
     console.log(`Api Server running on ${process.env.PORT} port`);
 })
 
-app.get('/check', (req, res) => {
-    console.log('Health Check Request');
-    res.status(200);
-    res.send(`wellcome!`).end()
 
-});
-
-
-async function main() {
-
-    const uri = "mongodb+srv://inbalMines:nba3121@cluster0.ninh8.mongodb.net/costomSwing?retryWrites=true&w=majority";
-
-    const client = new MongoClient(uri,{ useNewUrlParser: true, useUnifiedTopology: true });
-
-    try {
-        await client.connect();
-
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
+const userScema = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }
 
-main().catch(console.error);
+const connectDb = async (req, res) => {
+    try {
+        mongooDb.connect(process.env.CONNECT_DB, userScema)
+        console.log(`connect to db`);
+    }
+    catch (err) { console.log(`error in connection to mongoo+${err}`); }
+}
 
-
-
+connectDb()
