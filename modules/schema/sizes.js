@@ -23,4 +23,4 @@ const sizes_schema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('sizes_schema', sizes_schema)
+module.exports = mongoose.model('sizeSchema', sizes_schema)

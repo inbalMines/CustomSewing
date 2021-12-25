@@ -1,19 +1,16 @@
-const sizes_schema = require("../modules/schema/sizes");
+const sizeSchema = require("../modules/schema/sizes");
 const mongoose = require('mongoose')
-const controller_sizes=require(`../controller/controller_sizes`)
+const mySizes = require(`../controller/controller_sizes`)
 
 
-async function postClientSizes () {
+async function postClientSizes(clientPostSizes) {
     try {
-
-        const sizes = new sizes_schema()
-        sizes.save()
-        await res.send(`item had been save`)
-        await console.log(`item had been save`);
+        const Sizes = mySizes.clientPostSizes()
+        const sizesInService = new sizeSchema(Sizes)
+        await sizesInService.save()
+        await console.log(`item had been save to db`);
     }
-    catch (error) { res.status(400).json(error); }
+    catch (error) { console.log(error); }
 }
-
-
 
 module.exports = { postClientSizes }
