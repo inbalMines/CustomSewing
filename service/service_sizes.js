@@ -1,16 +1,14 @@
-const sizeSchema = require("../modules/schema/sizes");
+const dal_Sizes =require( "../modules/dal/dal_Sizes");
+
 const mongoose = require('mongoose')
-const mySizes = require(`../controller/controller_sizes`)
 
 
-async function postClientSizes(clientPostSizes) {
-    try {
-        const Sizes = mySizes.clientPostSizes()
-        const sizesInService = new sizeSchema(Sizes)
-        await sizesInService.save()
-        await console.log(`item had been save to db`);
-    }
-    catch (error) { console.log(error); }
+
+async function addSizes(clientPostSizes) {
+    //here we will do all teh validations
+    // here we will do all teh calculation logic if needed
+        await dal_Sizes.addSizesToDB(clientPostSizes)
+         console.log(`item had been save to db`);
 }
 
-module.exports = { postClientSizes }
+module.exports = { addSizes }

@@ -1,12 +1,9 @@
+const sizeSchema =require('../schema/sizes');
 
+async function addSizesToDB(postClientSizes) {
 
-
-// async function postClientSizesToDb(postClientSizes) {
-//     try {
-//         const mySizes = postClientSizes()
-//         const sizesInService = new sizeSchema(mySizes)
-//         sizesInService.save()
-//         await console.log(`item had been save`);
-//     }
-//     catch (error) { console.log(error); }
-// }
+        const sizeRecord = new sizeSchema(postClientSizes)
+        await sizeRecord.save()
+        console.log(`item had been save`);
+}
+module.exports = { addSizesToDB }
