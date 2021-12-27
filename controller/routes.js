@@ -1,10 +1,10 @@
 const router=require('express').Router()
 const index=require('./index')
-const controller_sizes=require(`./controller_sizes`)
+const controllerSizes=require(`./controller_sizes`)
 
 
 router.get(`/healthcheck`,index.healthCheck)
-router.post(`/mySizes`,controller_sizes.clientPostSizes)
+router.post(`/mySizes`,controllerSizes.addSizes)
 
 
 module.exports=router
