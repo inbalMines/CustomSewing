@@ -15,4 +15,4 @@ async function addSizes(req, res) {
 }
 
 
-module.exports = { addSizes: addSizes }
+module.exports = { addSizes }
