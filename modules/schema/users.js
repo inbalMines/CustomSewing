@@ -2,26 +2,26 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
 const userSchema = new mongoose.Schema({
-    Name: {
+    name: {
         type: String,
         required: true,
 
     },
 
-    Password: {
+    password: {
         type: String,
         required: true,
         minlength: 4
     },
 
-    Email: {
+    email: {
         type: String,
         required: true,
         // match: /.+\@.+\..+/,   מה זה אומר?!
         unique: true
     },
 
-    PhoneNumber: {
+    phoneNumber: {
         type: Number,
         unique: true,
         minlength: 10
@@ -30,4 +30,4 @@ const userSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model(`userSchema`, userSchema)
+module.exports = mongoose.model(`Users`, userSchema)

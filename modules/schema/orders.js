@@ -20,10 +20,10 @@ const orderSchema = new mongoose.Schema({
       
     },
 
-    Order_status:
+    order_status:
     {
         type: String
     }
 })
 
-module.exports = mongoose.model('orderSchema', orderSchema)
+module.exports = mongoose.model('Orders', orderSchema)

@@ -16,15 +16,9 @@ const userDetails = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: `sizeSchema`
 
-    },
-
-    user_orders: {
-
-        type: mongoose.Types.ObjectId,
-        ref: `orderSchema`
-    },
+    }
 
 
 })
 
-module.exports = mongoose.model(`userDetails`, userDetails)
+module.exports = mongoose.model(`UsersDetails`, userDetails)

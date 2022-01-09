@@ -2,17 +2,17 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
 const catalogSchema = new mongoose.Schema({
-    Name: {
+    name: {
         type: String,
         required: true,
         unique: true,
     },
     
-    Description: {
+    description: {
         type: String,
         required: true
     },
-    Fabric: {
+    fabric: {
         type: String,
         required: true
     },
@@ -23,4 +23,4 @@ const catalogSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('catalogSchema', catalogSchema)
+module.exports = mongoose.model('Cataloges', catalogSchema)
